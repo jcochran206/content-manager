@@ -1,0 +1,32 @@
+export const resources = [
+    {
+        id: "1",
+        title : "learning one",
+        description: "desc here for one",
+        link: "url",
+        image: "img1",
+        priority: 1,
+        timeToFinish: 120,
+        active: false,
+    },
+    {
+        id: "2",
+        title : "learning two",
+        description: "desc here for two",
+        link: "url",
+        image: "img1",
+        priority: 2,
+        timeToFinish: 120,
+        active: false,
+    },
+    {
+        id: "3",
+        title : "learning three",
+        description: "desc here for three",
+        link: "url",
+        image: "img1",
+        priority: 3,
+        timeToFinish: 120,
+        active: false,
+    },
+] 

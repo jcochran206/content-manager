@@ -1,5 +1,8 @@
-import data from 'pages/api/data.json';
 
-export default function(req,res){
-    res.send(data)
+
+export default async function(req,res){
+    const dataRes = await fetch('http://localhost:3030/api/resources');
+    const data = await dataRes.json();
+
+    res.send(data);
 } 

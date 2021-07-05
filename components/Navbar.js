@@ -1,4 +1,4 @@
-
+import Link from 'next/link';
 
 const Navbar = () => {
     return (
@@ -26,12 +26,16 @@ const Navbar = () => {
                     </span>
                     </div>
                 </div>
+                <Link href="/">
                 <a className="navbar-item is-active is-size-5 has-text-weight-semibold">
                     Home
                 </a>
+                </Link>
+                <Link href="/resources/new">
                 <a className="navbar-item is-size-5 has-text-weight-semibold">
-                    Examples
+                    Add
                 </a>
+                </Link>
                 <a className="navbar-item is-size-5 has-text-weight-semibold">
                     Features
                 </a>

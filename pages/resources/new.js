@@ -1,7 +1,16 @@
 
 import Layout from "components/Layout";
 
+const Default_data = {
+    title: "",
+    description: "",
+    link: "",
+    priority: "2",
+    timeToFinish: 60,
+}
+
 const ResourceCreated = () => {
+    const [form, setForm] = useState(Default_data);
 
     return(
         <Layout>
@@ -14,14 +23,14 @@ const ResourceCreated = () => {
                                 <div className="field">
                                     <label className="label">Title</label>
                                     <div className="control">
-                                    <input className="input" type="text" placeholder="Title"/>
+                                    <input className="input" type="text" placeholder="Title" value={form.title}/>
                                     </div>
                                 </div>
 
                                 <div className="field">
                                     <label className="label">Description</label>
                                     <div className="control">
-                                    <textarea className="textarea" placeholder='description here'></textarea>
+                                    <textarea className="textarea" placeholder='description here' value={form.description}></textarea>
                                     </div>
                                 </div>
 
@@ -30,14 +39,15 @@ const ResourceCreated = () => {
                                     <div className="control">
                                     <input className="input" 
                                         type="text" 
-                                        placeholder="Input link"/>
+                                        placeholder="Input link"
+                                        value={form.link}/>
                                     </div>
                                 </div>
 
                                 <div className="field">
                                     <label className="label">Priority</label>
                                     <div className="control">
-                                        <select>
+                                        <select value={form.priority}>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -48,8 +58,9 @@ const ResourceCreated = () => {
                                 <div className="field">
                                     <label className="label">Time to Finish</label>
                                     <div className="control">
-                                    <input className="input" type="number" placeholder="60 (time is in mins)"/>
+                                    <input className="input" type="number" placeholder="60 (time is in mins)" value={form.timeToFinish}/>
                                     </div>
+                                    <p className="help"> Time in Minutes </p>
                                 </div>
 
                                 <div className="field is-grouped">

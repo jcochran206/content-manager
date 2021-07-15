@@ -15,11 +15,7 @@ const ResourceCreated = () => {
     const [form, setForm] = useState(Default_data);
 
     const submitForm = () => {
-        fetch('/api/resources', {
-            body: JSON.stringify(form),
-            headers: {"Content-Type": "application/json"},
-            method: "POST"
-        })
+        axios.post('/api/resources', form)
     }
 
     const resetForm = () => setForm(Default_data);

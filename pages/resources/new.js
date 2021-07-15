@@ -1,5 +1,6 @@
 
 import Layout from "components/Layout";
+import axios from 'axios';
 import {useState} from 'react';
 
 const Default_data = {
@@ -14,7 +15,11 @@ const ResourceCreated = () => {
     const [form, setForm] = useState(Default_data);
 
     const submitForm = () => {
-        alert(JSON.stringify(form));
+        fetch('/api/resources', {
+            body: JSON.stringify(form),
+            headers: {"Content-Type": "application/json"},
+            method: "POST"
+        })
     }
 
     const resetForm = () => setForm(Default_data);

@@ -8,7 +8,7 @@ const Default_data = {
     description: "",
     link: "",
     priority: "2",
-    timeToFinish: 60,
+    timeToFinish: 60
 }
 
 const ResourceCreated = () => {
@@ -16,12 +16,14 @@ const ResourceCreated = () => {
 
     const submitForm = () => {
         axios.post('/api/resources', form)
+        .then(res => alert(res?.data))
+        .catch(err => alert(err?.response?.data));
     }
 
     const resetForm = () => setForm(Default_data);
 
-    const handleChange = (e) => {
-        const {name, value} = e.target; 
+    const handleChange = (event) => {
+        const {name, value} = event.target; 
         setForm({
             ...form,
             [name]: value
@@ -54,11 +56,12 @@ const ResourceCreated = () => {
                                     <label className="label">Link</label>
                                     <div className="control">
                                     <input className="input" 
+                                        value={form.link}
                                         type="text" 
                                         placeholder="Input link"
                                         name="link"
                                         onChange={handleChange}
-                                        value={form.link}/>
+                                        />
                                     </div>
                                 </div>
 
@@ -74,11 +77,17 @@ const ResourceCreated = () => {
                                 </div>
 
                                 <div className="field">
-                                    <label className="label">Time to Finish</label>
-                                    <div className="control">
-                                    <input className="input" type="number" placeholder="60 (time is in mins)" name="timeToFinsh" onChange={handleChange} value={form.timeToFinish}/>
-                                    </div>
-                                    <p className="help"> Time in Minutes </p>
+                                <label className="label">Time to finish</label>
+                                <div className="control">
+                                    <input
+                                    value={form.timeToFinish}
+                                    onChange={handleChange}
+                                    name="timeToFinish"
+                                    className="input"
+                                    type="number"
+                                    placeholder="60" />
+                                </div>
+                                <p className="help">Time is in minutes</p>
                                 </div>
 
                                 <div className="field is-grouped">

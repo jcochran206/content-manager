@@ -13,8 +13,13 @@ export default async function(req,res){
         if(!title || !description || !link || !priority || !timeToFinish){
             return res.status(422).send("Data is missing!"); 
         }
-
-        axios.post("http://localhost:3030/api/resources", req.body);
+        try {
+            const axiosRes = await axios.post("http://localhost:3030/api/resources", req.body);
+            return res.send(axiosRes.data)
+        } catch {
+            return status(422).send("data can not be stored");
+        }
+        
         
         return res.send("data has been received!");
     }

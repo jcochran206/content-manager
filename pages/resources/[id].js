@@ -1,6 +1,6 @@
 import Layout from "components/Layout";
 
-const ResourceDetail = () => {
+const ResourceDetail = ({resource}) => {
 
   return (
     <Layout>
@@ -11,9 +11,9 @@ const ResourceDetail = () => {
               <div className="columns">
                 <div className="column is-8 is-offset-2">
                   <div className="content is-medium">
-                    <h2 className="subtitle is-4">DATE HERE</h2>
-                    <h1 className="title">TITLE HERE</h1>
-                    <p>DESC HERE</p>
+                    <h2 className="subtitle is-4">{resource.createdAt}</h2>
+                    <h1 className="title">{resource.title}</h1>
+                    <p>{resource.description}</p>
                   </div>
                 </div>
               </div>
@@ -23,6 +23,17 @@ const ResourceDetail = () => {
       </section>
     </Layout>
   )
+}
+
+export async function getServerSideProps({params}){
+    const dataRes = await fetch(`http://localhost:3030/api/resources/${params.id}`);
+    const data = await dataRes.json();
+
+    return {
+        props: {
+           resource: data
+        }
+    }
 }
 
 
